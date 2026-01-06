@@ -8,19 +8,20 @@ Social Bingo game for in-person mixers. Find people who match the questions and 
 
 ## Prerequisites
 
-- [Node.js 22](https://nodejs.org/) or higher
+- [.NET 10 SDK](https://dotnet.microsoft.com/download/dotnet/10.0) or higher
 
 ## Run
 
 ```bash
-npm install
-npm run dev
+cd SocOps
+dotnet run
 ```
 
 ## Build
 
 ```bash
-npm run build
+cd SocOps
+dotnet build
 ```
 
 Deploys automatically to GitHub Pages on push to `main`.

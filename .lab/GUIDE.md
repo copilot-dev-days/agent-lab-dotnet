@@ -1,4 +1,4 @@
-# Soc Ops — A VS Code Agent Lab (1hr)
+# Soc Ops — A VS Code Agent Lab (1hr) - C# Edition
 
 Harald Kirschner `@digitarald`
 — VS Code Team `@code`
@@ -8,10 +8,12 @@ Harald Kirschner `@digitarald`
 - [ ] Latest VS Code **v1.107** (no update pending)
 - [ ] Signed in with GitHub
   - Copilot Free can not run cloud agent!
-- [ ] Git & Node installed
+- [ ] Git & .NET 10 SDK installed
 - [ ] Chat open and Agent ready for action
 
 *Optional*: Use DevContainer or WSL.
+
+> **Note**: This is the C# .NET 10 Blazor WebAssembly edition of the workshop. The original uses React + TypeScript.
 
 ## Setup
 

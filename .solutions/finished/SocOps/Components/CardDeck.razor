@@ -10,7 +10,7 @@
         </button>
         <h1 class="font-bold text-cyan font-display tracking-wider neon-text">CARD DECK</h1>
         <button
-            @onclick="DrawNewCard"
+            @onclick="ResetDeck"
             class="text-magenta text-sm px-3 py-1.5 rounded border border-magenta transition-all hover:shadow-neon">
             SHUFFLE
         </button>
@@ -19,19 +19,20 @@
     <!-- Card Area -->
     <div class="flex-1 flex items-center justify-center p-6">
         <div class="relative w-full max-w-sm">
-            <!-- Card -->
-            <div class="@GetCardClasses()">
-                <div class="absolute inset-0 bg-card rounded-2xl neon-border transform transition-all duration-500 @(IsFlipped ? "rotate-y-180 opacity-0" : "")">
-                    <!-- Card Back -->
-                    <div class="h-full flex flex-col items-center justify-center p-6">
+            <!-- Clickable Card -->
+            <button @onclick="HandleCardTap" class="w-full aspect-[3/4] perspective-1000" disabled="@IsAllDone">
+                @if (!IsFlipped)
+                {
+                    <!-- Card Back - Tap to Reveal -->
+                    <div class="absolute inset-0 bg-card rounded-2xl neon-border flex flex-col items-center justify-center p-6">
                         <div class="text-6xl mb-4">🎴</div>
                         <p class="text-cyan font-display uppercase tracking-wider">TAP TO REVEAL</p>
                     </div>
-                </div>
-                
-                <div class="absolute inset-0 bg-card rounded-2xl @(IsFlipped ? "neon-border-pink" : "opacity-0") transform transition-all duration-500 @(IsFlipped ? "" : "-rotate-y-180")">
-                    <!-- Card Front -->
-                    <div class="h-full flex flex-col items-center justify-center p-6 text-center">
+                }
+                else
+                {
+                    <!-- Card Front - Question -->
+                    <div class="absolute inset-0 bg-card rounded-2xl neon-border-pink flex flex-col items-center justify-center p-6 text-center">
                         <p class="text-2xl font-semibold text-white mb-8 leading-relaxed">
                             @CurrentQuestion
                         </p>
@@ -39,29 +40,23 @@
                             Find someone who...
                         </p>
                     </div>
-                </div>
-            </div>
-            
-            <!-- Tap instruction -->
-            @if (!IsFlipped)
-            {
-                <button @onclick="FlipCard" class="absolute inset-0 z-10"></button>
-            }
+                }
+            </button>
         </div>
     </div>
 
     <!-- Action Buttons -->
-    @if (IsFlipped)
+    @if (IsFlipped && !IsAllDone)
     {
         <div class="p-4 flex gap-4">
             <button
                 @onclick="() => HandleResult(false)"
-                class="flex-1 py-4 bg-card border border-magenta rounded-lg text-magenta font-display uppercase tracking-wider transition-all hover:shadow-neon hover:neon-border-pink">
+                class="flex-1 py-4 bg-card border border-magenta rounded-lg text-magenta font-display uppercase tracking-wider transition-all hover:shadow-neon">
                 ✗ NO MATCH
             </button>
             <button
                 @onclick="() => HandleResult(true)"
-                class="flex-1 py-4 bg-card border border-cyan rounded-lg text-cyan font-display uppercase tracking-wider transition-all hover:shadow-neon hover:neon-border">
+                class="flex-1 py-4 bg-card border border-cyan rounded-lg text-cyan font-display uppercase tracking-wider transition-all hover:shadow-neon">
                 ✓ FOUND ONE
             </button>
         </div>
@@ -96,14 +91,13 @@
     private int MatchCount = 0;
     private int SkipCount = 0;
 
-    private string CurrentQuestion => CurrentIndex < Deck.Count ? Deck[CurrentIndex] : "All done!";
+    private string CurrentQuestion => CurrentIndex < Deck.Count ? Deck[CurrentIndex] : "All done! 🎉";
     private int CardsRemaining => Math.Max(0, Deck.Count - CurrentIndex);
+    private bool IsAllDone => CurrentIndex >= Deck.Count;
 
     protected override void OnInitialized()
     {
         ShuffleDeck();
-        // Auto-flip the first card
-        IsFlipped = true;
     }
 
     private void ShuffleDeck()
@@ -111,19 +105,22 @@
         var random = new Random();
         Deck = Questions.QuestionsList.OrderBy(_ => random.Next()).ToList();
         CurrentIndex = 0;
-        IsFlipped = true;
+        IsFlipped = false; // Start with card face down
     }
 
-    private void FlipCard()
-    {
-        IsFlipped = true;
-    }
-
-    private void DrawNewCard()
+    private void ResetDeck()
     {
         ShuffleDeck();
         MatchCount = 0;
         SkipCount = 0;
+    }
+
+    private void HandleCardTap()
+    {
+        if (!IsFlipped && !IsAllDone)
+        {
+            IsFlipped = true; // Reveal the card
+        }
     }
 
     private void HandleResult(bool isMatch)
@@ -134,29 +131,12 @@
             SkipCount++;
 
         CurrentIndex++;
-        
-        if (CurrentIndex < Deck.Count)
-        {
-            IsFlipped = true; // Auto-flip next card
-        }
-    }
-
-    private string GetCardClasses()
-    {
-        return "relative w-full aspect-[3/4] perspective-1000";
+        IsFlipped = false; // Show next card face down
     }
 }
 
 <style>
     .perspective-1000 {
         perspective: 1000px;
-    }
-    
-    .rotate-y-180 {
-        transform: rotateY(180deg);
-    }
-    
-    .-rotate-y-180 {
-        transform: rotateY(-180deg);
     }
 </style>

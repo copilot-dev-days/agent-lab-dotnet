@@ -25,12 +25,12 @@
 
     private string GetCssClasses()
     {
-        var baseClasses = "cyber-square relative flex items-center justify-center p-1 text-center rounded transition-all duration-300 select-none min-h-[60px] text-xs leading-tight";
+        var baseClasses = "cyber-square relative flex items-center justify-center p-1 text-center rounded transition-all duration-300 select-none min-h-[60px] text-xs leading-tight text-white";
 
         var stateClasses = Square.IsMarked
             ? IsWinning
-                ? "cyber-square winning"
-                : "cyber-square marked"
+                ? "cyber-square winning text-magenta"
+                : "cyber-square marked text-cyan"
             : "";
 
         var freeSpaceClasses = Square.IsFreeSpace ? "font-bold text-sm text-cyan neon-text" : "";

@@ -3,6 +3,7 @@ name: Deploy to GitHub Pages
 on:
   push:
     branches: [main]
+  workflow_dispatch:
 
 permissions:
   contents: read
@@ -22,25 +23,35 @@ jobs:
     steps:
       - uses: actions/checkout@v4
       
-      - uses: actions/setup-dotnet@v4
+      - name: Setup .NET
+        uses: actions/setup-dotnet@v4
         with:
           dotnet-version: '10.0.x'
       
-      - name: Restore dependencies
-        run: dotnet restore SocOps/SocOps.csproj
-      
-      - name: Build
-        run: dotnet publish SocOps/SocOps.csproj -c Release -o release --nologo
-      
-      - name: Change base-tag in index.html
+      - name: Build Blazor App
         run: |
-          sed -i 's/<base href="\/" \/>/<base href="\/${{ github.event.repository.name }}\/" \/>/g' release/wwwroot/index.html
+          cd SocOps
+          dotnet publish -c Release -o ../publish
+      
+      - name: Prepare deployment
+        run: |
+          # Copy Blazor app output to root
+          cp -r publish/wwwroot/* ./_site/
+          
+          # Copy docs folder
+          cp -r docs/* ./_site/docs/
+          
+          # Fix base href for GitHub Pages subdirectory
+          sed -i 's|<base href="/" />|<base href="/vscode-github-copilot-agent-lab/" />|g' ./_site/index.html
+          
+          # Prevent Jekyll processing
+          touch ./_site/.nojekyll
       
       - uses: actions/configure-pages@v4
       
       - uses: actions/upload-pages-artifact@v3
         with:
-          path: release/wwwroot
+          path: _site
       
       - name: Deploy to GitHub Pages
         id: deployment

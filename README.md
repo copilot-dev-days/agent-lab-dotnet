@@ -2,9 +2,23 @@
 
 Social Bingo game for in-person mixers. Find people who match the questions and get 5 in a row!
 
-<!-- You can remove this message when updating the readme as part of the workshop -->
-👉 **[Follow the Lab Guide](.lab/GUIDE.md)** for instructions on how to set up and customize the game.
+🎮 **[Play the Game](https://dotnet-presentations.github.io/vscode-github-copilot-agent-lab/)** • 📚 **[View Lab Guide](https://dotnet-presentations.github.io/vscode-github-copilot-agent-lab/docs/)**
 
+---
+
+## 📚 Lab Guide
+
+| Part | Title |
+|------|-------|
+| [**00**](https://dotnet-presentations.github.io/vscode-github-copilot-agent-lab/docs/step.html?step=00-overview) | Overview & Checklist |
+| [**01**](https://dotnet-presentations.github.io/vscode-github-copilot-agent-lab/docs/step.html?step=01-setup) | Setup & Context Engineering |
+| [**02**](https://dotnet-presentations.github.io/vscode-github-copilot-agent-lab/docs/step.html?step=02-design) | Design-First Frontend |
+| [**03**](https://dotnet-presentations.github.io/vscode-github-copilot-agent-lab/docs/step.html?step=03-quiz-master) | Custom Quiz Master |
+| [**04**](https://dotnet-presentations.github.io/vscode-github-copilot-agent-lab/docs/step.html?step=04-multi-agent) | Multi-Agent Development |
+
+> 📝 Lab guides are also available in the [`.lab/`](.lab/) folder for offline reading.
+
+---
 
 ## Prerequisites
 

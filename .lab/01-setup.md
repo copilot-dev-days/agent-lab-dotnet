@@ -14,7 +14,7 @@ In this section, you'll set up your development environment and teach GitHub Cop
 
 ### Step 1: Create Your Repository
 
-1. Open [github.com/dotnet-presentations/vscode-github-copilot-agent-lab](https://github.com/dotnet-presentations/vscode-github-copilot-agent-lab)
+1. Open [github.com/copilot-dev-days/agent-lab-dotnet](https://github.com/copilot-dev-days/agent-lab-dotnet)
 2. Click **Use this template** → **Create a new repository**
    - Name: `my-soc-ops-csharp`
    - Visibility: **Public**

@@ -32,7 +32,7 @@
 ## 🚀 Quick Setup
 
 ```
-# 1. Use template at github.com/dotnet-presentations/vscode-github-copilot-agent-lab
+# 1. Use template at github.com/copilot-dev-days/agent-lab-dotnet
 # 2. Enable GitHub Pages (Settings > Pages > GitHub Actions)
 # 3. Clone in VS Code
 # 4. Run /setup in Chat

@@ -45,7 +45,7 @@ jobs:
           cp -r publish/wwwroot/* ./_site/app/
           
           # Fix base href for GitHub Pages subdirectory
-          sed -i 's|<base href="/" />|<base href="/vscode-github-copilot-agent-lab/app/" />|g' ./_site/app/index.html
+          sed -i 's|<base href="/" />|<base href="/agent-lab-dotnet/app/" />|g' ./_site/app/index.html
           
           # Prevent Jekyll processing
           touch ./_site/.nojekyll

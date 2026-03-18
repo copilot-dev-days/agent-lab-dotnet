@@ -278,6 +278,41 @@
             }
         }
 
+        // Enable clickable task-list checkboxes and persist by step
+        function enableTaskListCheckboxes(stepId) {
+            const checkboxes = Array.from(document.querySelectorAll('#markdown-content input[type="checkbox"]'));
+            if (!checkboxes.length) return;
+
+            const storageKey = `lab-checklist:${stepId}`;
+            let savedStates = null;
+
+            try {
+                const raw = localStorage.getItem(storageKey);
+                if (raw) {
+                    savedStates = JSON.parse(raw);
+                }
+            } catch (e) {
+                savedStates = null;
+            }
+
+            checkboxes.forEach((checkbox, index) => {
+                checkbox.removeAttribute('disabled');
+
+                if (Array.isArray(savedStates) && typeof savedStates[index] === 'boolean') {
+                    checkbox.checked = savedStates[index];
+                }
+
+                checkbox.addEventListener('change', () => {
+                    const currentStates = checkboxes.map(cb => cb.checked);
+                    try {
+                        localStorage.setItem(storageKey, JSON.stringify(currentStates));
+                    } catch (e) {
+                        // Ignore storage failures (private browsing, disabled storage, etc.)
+                    }
+                });
+            });
+        }
+
         // Process markdown - clean up navigation links and fix paths
         function processMarkdown(md) {
             // Remove the header navigation bar (we have our own sidebar)
@@ -337,6 +372,7 @@
                 });
 
                 document.getElementById('markdown-content').innerHTML = marked.parse(md);
+                enableTaskListCheckboxes(step.id);
 
                 // If this is the completion page, add confetti!
                 if (step.id === '05-complete') {

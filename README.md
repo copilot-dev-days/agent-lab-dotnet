@@ -24,6 +24,19 @@ Social Bingo game for in-person mixers. Find people who match the questions and 
 
 - [.NET 10 SDK](https://dotnet.microsoft.com/download/dotnet/10.0) or higher
 
+## Open in GitHub Codespaces (optional)
+
+After creating your own repo from this template:
+
+1. Open your repo on GitHub
+2. Click **Code** → **Codespaces** → **Create codespace on main**
+3. Wait for the devcontainer to finish setup
+4. From the repository root, run:
+   ```bash
+   cd SocOps
+   dotnet run
+   ```
+
 ## Run
 
 ```bash

@@ -26,7 +26,15 @@ In this section, you'll set up your development environment and teach GitHub Cop
 2. Under "Build and deployment", select **GitHub Actions**
 3. ✅ Every commit will now publish to: `https://{username}.github.io/{repo-name}`
 
-### Step 3: Clone & Open in VS Code
+### Step 3: Pick Your Development Environment
+
+#### Option A: GitHub Codespaces (fastest)
+
+1. Open your new repository on GitHub
+2. Click **Code** → **Codespaces** → **Create codespace on main**
+3. Wait for the devcontainer to finish setup
+
+#### Option B: Local VS Code
 
 1. Open VS Code
 2. Run command: `Git: Clone` → `Clone from GitHub`

@@ -1,6 +1,7 @@
 {
   "name": "Soc-Ops Blazor C#",
   "image": "mcr.microsoft.com/devcontainers/dotnet:10.0",
+  "remoteUser": "vscode",
   "customizations": {
     "vscode": {
       "extensions": [
@@ -15,7 +16,7 @@
       ]
     }
   },
-  "postCreateCommand": "dotnet restore SocOps/SocOps.csproj",
+  "postCreateCommand": "bash -lc 'sln=$(find . -maxdepth 1 -name \"*.sln\" | head -n 1); if [ -n \"$sln\" ]; then dotnet restore \"$sln\"; else dotnet restore SocOps/SocOps.csproj; fi'",
   "forwardPorts": [5166],
   "portsAttributes": {
     "5166": {

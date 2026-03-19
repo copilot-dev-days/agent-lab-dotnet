@@ -379,7 +379,7 @@
                 button.setAttribute('aria-label', 'Copy code block to clipboard');
 
                 button.addEventListener('click', async () => {
-                    const codeText = code?.innerText ?? pre.innerText;
+                    const codeText = code?.textContent ?? pre.textContent ?? '';
 
                     try {
                         await copyText(codeText.trimEnd());

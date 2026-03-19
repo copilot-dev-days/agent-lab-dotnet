@@ -334,6 +334,8 @@
             }
         }
 
+        const copyButtonResetTimers = new WeakMap();
+
         function showCopyState(button, state) {
             const labels = {
                 idle: 'Copy',
@@ -344,12 +346,17 @@
             button.textContent = labels[state];
             button.dataset.state = state;
 
-            clearTimeout(button._copyResetTimer);
+            const existingTimer = copyButtonResetTimers.get(button);
+            if (existingTimer) {
+                clearTimeout(existingTimer);
+            }
+
             if (state !== 'idle') {
-                button._copyResetTimer = setTimeout(() => {
+                const resetTimer = setTimeout(() => {
                     button.textContent = labels.idle;
                     button.dataset.state = 'idle';
                 }, 2000);
+                copyButtonResetTimers.set(button, resetTimer);
             }
         }
 

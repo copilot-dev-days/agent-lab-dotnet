@@ -313,6 +313,81 @@
             });
         }
 
+        async function copyText(text) {
+            if (navigator.clipboard?.writeText) {
+                await navigator.clipboard.writeText(text);
+                return;
+            }
+
+            const textarea = document.createElement('textarea');
+            textarea.value = text;
+            textarea.setAttribute('readonly', '');
+            textarea.style.position = 'absolute';
+            textarea.style.left = '-9999px';
+            document.body.appendChild(textarea);
+            textarea.select();
+
+            try {
+                document.execCommand('copy');
+            } finally {
+                textarea.remove();
+            }
+        }
+
+        function showCopyState(button, state) {
+            const labels = {
+                idle: 'Copy',
+                success: 'Copied!',
+                error: 'Try again'
+            };
+
+            button.textContent = labels[state];
+            button.dataset.state = state;
+
+            clearTimeout(button._copyResetTimer);
+            if (state !== 'idle') {
+                button._copyResetTimer = setTimeout(() => {
+                    button.textContent = labels.idle;
+                    button.dataset.state = 'idle';
+                }, 2000);
+            }
+        }
+
+        function enhanceCodeBlocks() {
+            const blocks = document.querySelectorAll('#markdown-content pre');
+
+            blocks.forEach((pre) => {
+                if (pre.parentElement?.classList.contains('code-block-wrapper')) {
+                    return;
+                }
+
+                const code = pre.querySelector('code');
+                const wrapper = document.createElement('div');
+                const button = document.createElement('button');
+
+                wrapper.className = 'code-block-wrapper';
+                button.className = 'copy-code-btn';
+                button.type = 'button';
+                button.textContent = 'Copy';
+                button.setAttribute('aria-label', 'Copy code block to clipboard');
+
+                button.addEventListener('click', async () => {
+                    const codeText = code?.innerText ?? pre.innerText;
+
+                    try {
+                        await copyText(codeText.trimEnd());
+                        showCopyState(button, 'success');
+                    } catch (error) {
+                        showCopyState(button, 'error');
+                    }
+                });
+
+                pre.parentNode.insertBefore(wrapper, pre);
+                wrapper.appendChild(button);
+                wrapper.appendChild(pre);
+            });
+        }
+
         // Process markdown - clean up navigation links and fix paths
         function processMarkdown(md) {
             // Remove the header navigation bar (we have our own sidebar)
@@ -373,6 +448,7 @@
 
                 document.getElementById('markdown-content').innerHTML = marked.parse(md);
                 enableTaskListCheckboxes(step.id);
+                enhanceCodeBlocks();
 
                 // If this is the completion page, add confetti!
                 if (step.id === '05-complete') {

@@ -340,6 +340,56 @@
             margin: 1.5rem 0;
         }
 
+        .code-block-wrapper {
+            position: relative;
+            margin: 1.5rem 0;
+        }
+
+        .code-block-wrapper pre {
+            margin: 0;
+        }
+
+        .copy-code-btn {
+            position: absolute;
+            top: 0.75rem;
+            right: 0.75rem;
+            z-index: 1;
+            border: 1px solid color-mix(in srgb, var(--neon-cyan) 45%, var(--border-color));
+            background: color-mix(in srgb, var(--bg-dark) 78%, var(--neon-cyan));
+            color: var(--text-primary);
+            border-radius: 999px;
+            padding: 0.35rem 0.75rem;
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 0.75rem;
+            font-weight: 700;
+            letter-spacing: 0.04em;
+            text-transform: uppercase;
+            cursor: pointer;
+            transition: transform 0.15s ease, border-color 0.15s ease, background 0.15s ease, color 0.15s ease;
+            box-shadow: 0 0 0 1px rgba(0, 245, 255, 0.08);
+        }
+
+        .copy-code-btn:hover,
+        .copy-code-btn:focus-visible {
+            background: color-mix(in srgb, var(--neon-cyan) 24%, var(--bg-dark));
+            border-color: var(--neon-cyan);
+            color: var(--neon-cyan);
+            transform: translateY(-1px);
+            outline: none;
+        }
+
+        .copy-code-btn[data-state="success"] {
+            color: var(--success-green);
+            border-color: var(--success-green);
+            background: color-mix(in srgb, var(--bg-dark) 70%, var(--success-green));
+        }
+
+        .copy-code-btn[data-state="error"] {
+            color: var(--warning-yellow);
+            border-color: var(--warning-yellow);
+            background: color-mix(in srgb, var(--bg-dark) 72%, var(--warning-yellow));
+        }
+
         .markdown pre code {
             color: var(--text-primary);
             background: none;
@@ -452,5 +502,17 @@
 
             .header-title {
                 display: none;
+            }
+        }
+
+        @media (max-width: 640px) {
+            .copy-code-btn {
+                top: 0.5rem;
+                right: 0.5rem;
+                padding: 0.3rem 0.65rem;
+            }
+
+            .markdown pre {
+                padding-top: 3rem;
             }
         }

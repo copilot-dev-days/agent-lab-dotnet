@@ -354,7 +354,9 @@
             top: 0.75rem;
             right: 0.75rem;
             z-index: 1;
+            border: 1px solid var(--border-color);
             border: 1px solid color-mix(in srgb, var(--neon-cyan) 45%, var(--border-color));
+            background: rgba(0, 245, 255, 0.12);
             background: color-mix(in srgb, var(--bg-dark) 78%, var(--neon-cyan));
             color: var(--text-primary);
             border-radius: 999px;
@@ -370,6 +372,7 @@
 
         .copy-code-btn:hover,
         .copy-code-btn:focus-visible {
+            background: rgba(0, 245, 255, 0.18);
             background: color-mix(in srgb, var(--neon-cyan) 24%, var(--bg-dark));
             border-color: var(--neon-cyan);
             color: var(--neon-cyan);
@@ -380,12 +383,14 @@
         .copy-code-btn[data-state="success"] {
             color: var(--success-green);
             border-color: var(--success-green);
+            background: rgba(78, 201, 176, 0.14);
             background: color-mix(in srgb, var(--bg-dark) 70%, var(--success-green));
         }
 
         .copy-code-btn[data-state="error"] {
             color: var(--warning-yellow);
             border-color: var(--warning-yellow);
+            background: rgba(220, 220, 170, 0.14);
             background: color-mix(in srgb, var(--bg-dark) 72%, var(--warning-yellow));
         }
 

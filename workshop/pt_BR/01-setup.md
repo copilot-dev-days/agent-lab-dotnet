@@ -27,7 +27,15 @@ Nesta seção, você vai configurar seu ambiente de desenvolvimento e ensinar o 
 2. Em "Build and deployment", selecione **GitHub Actions**
 3. ✅ Cada commit agora será publicado em: `https://{username}.github.io/{repo-name}`
 
-### Passo 3: Clone & Abra no VS Code
+### Passo 3: Escolha Seu Ambiente de Desenvolvimento
+
+#### Opção A: GitHub Codespaces (mais rápido)
+
+1. Abra seu novo repositório no GitHub
+2. Clique em **Code** → **Codespaces** → **Create codespace on main**
+3. Aguarde o devcontainer finalizar a configuração
+
+#### Opção B: VS Code Local
 
 1. Abra o VS Code
 2. Execute o comando: `Git: Clone` → `Clone from GitHub`
@@ -77,7 +85,7 @@ Instruções guiam todas as interações agênticas, tornando-as eficientes e co
 
 ### Tarefa 2: Background Agents para Trabalho Paralelo
 
-Background agents rodam em git worktrees isoladas — perfeitos para tarefas que não precisam de supervisão.
+Background agents rodam em git worktrees isolados — perfeitos para tarefas que não precisam de supervisão.
 
 **Passos:**
 

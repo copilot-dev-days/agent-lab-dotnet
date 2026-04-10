@@ -68,7 +68,7 @@ Instructions guide all agentic interactions, making them efficient and reliable.
 
 **Steps:**
 
-1. Run command: `Chat: Generate Workspace Instructions File`
+1. Run command: `Chat: Generate Agent Instructions`
 2. Wait for the agent to analyze your codebase
 3. Review the generated instructions (probably too detailed!)
 4. Follow up with:

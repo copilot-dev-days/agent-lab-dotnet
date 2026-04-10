@@ -72,7 +72,7 @@ Ejecuta el quiz master como cloud agent para generación asíncrona.
 
 ### Pasos
 
-1. Haz clic en `+` → **New cloud agent**
+1. Cambia el menú desplegable **Session target** a `Cloud`
 2. Selecciona **Quiz Master**
 3. Ingresa un tema diferente:
    ```

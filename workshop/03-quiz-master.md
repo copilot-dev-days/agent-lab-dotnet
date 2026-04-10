@@ -71,7 +71,7 @@ Run the quiz master as a cloud agent for async generation.
 
 ### Steps
 
-1. Click `+` → **New cloud agent**
+1. Change the **Session target** dropdown to `Cloud`
 2. Select **Quiz Master**
 3. Enter a different theme:
    ```

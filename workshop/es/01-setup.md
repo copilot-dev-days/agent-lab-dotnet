@@ -89,7 +89,7 @@ Los background agents se ejecutan en git worktrees aislados — perfectos para t
 
 **Pasos:**
 
-1. Haz clic en `+` en el Chat → **New background agent**
+1. En el cuadro de texto del Chat, cambia el menú desplegable **Session target** (debajo del campo de texto) de `Local` a `Copilot CLI`
 2. Ingresa:
    ```
    Add linting rules for unused vars and async/await usage; fix any errors
@@ -99,7 +99,7 @@ Los background agents se ejecutan en git worktrees aislados — perfectos para t
 
 **Prueba un Cloud Agent también:**
 
-1. Haz clic en `+` → **New cloud agent**
+1. Cambia el menú desplegable **Session target** a `Copilot cloud agent`
 2. Ingresa:
    ```
    Make the README more engaging as a landing page to the project

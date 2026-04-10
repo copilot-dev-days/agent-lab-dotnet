@@ -89,7 +89,7 @@ Background agents rodam em git worktrees isolados — perfeitos para tarefas que
 
 **Passos:**
 
-1. Clique em `+` no Chat → **New background agent**
+1. Na caixa de texto do Chat, altere o menu suspenso **Session target** (abaixo do campo de texto) de `Local` para `Copilot CLI`
 2. Digite:
    ```
    Add linting rules for unused vars and async/await usage; fix any errors
@@ -99,7 +99,7 @@ Background agents rodam em git worktrees isolados — perfeitos para tarefas que
 
 **Experimente um Cloud Agent também:**
 
-1. Clique em `+` → **New cloud agent**
+1. Altere o menu suspenso **Session target** para `Copilot cloud agent`
 2. Digite:
    ```
    Make the README more engaging as a landing page to the project

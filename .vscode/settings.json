@@ -17,5 +17,6 @@
   "chat.viewTitle.enabled": true,
   "chat.viewSessions.enabled": true,
   "github.copilot.chat.cli.customAgents.enabled": true,
-  "scm.repositories.explorer": true
+  "scm.repositories.explorer": true,
+  "chat.disableAIFeatures": false
 }

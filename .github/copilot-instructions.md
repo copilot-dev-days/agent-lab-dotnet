@@ -20,6 +20,17 @@
 - Components using `BingoGameService` must subscribe and unsubscribe from `OnStateChanged`.
 - Reuse utilities in `SocOps/wwwroot/css/app.css` before adding new CSS.
 
+## Design Guide
+
+- Keep gameplay behavior unchanged during visual redesigns; treat styling and markup updates as presentation-only unless the task explicitly requests feature changes.
+- Define and reuse CSS design tokens (colors, spacing, typography, shadows) in `SocOps/wwwroot/css/app.css`; avoid one-off inline styles.
+- Preserve clear state signaling for bingo tiles (default, marked, free, winning) using multiple cues (color, contrast, iconography, or border treatment), not color alone.
+- Use expressive, intentional visual direction per task (for example, themed palettes and typography), while maintaining readability on both desktop and mobile.
+- Prefer transform/opacity-based animations for performance and keep motion meaningful (screen entrance, state celebration, interaction feedback).
+- Verify responsive behavior at narrow widths (including 320px) so tile text remains legible and tap targets remain usable.
+- Maintain accessible contrast and semantic controls (`button`, `aria-label`, `aria-pressed`) when restyling components.
+- For new UI work, prioritize changes in these files: `SocOps/Components/StartScreen.razor`, `SocOps/Components/GameScreen.razor`, `SocOps/Components/BingoBoard.razor`, `SocOps/Components/BingoSquare.razor`, `SocOps/Components/BingoModal.razor`, and `SocOps/wwwroot/css/app.css`.
+
 ## References
 
 - `README.md` for prerequisites and local commands.

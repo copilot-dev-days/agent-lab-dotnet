@@ -1,10 +1,23 @@
 {
   "name": "Soc-Ops Blazor C#",
+
   "image": "mcr.microsoft.com/devcontainers/dotnet:10.0",
+
+  "features": {
+    "ghcr.io/devcontainers/features/copilot-cli:latest": {},
+    "ghcr.io/devcontainers/features/docker-in-docker:latest": {},
+    "ghcr.io/devcontainers/features/github-cli:latest": {},
+    "ghcr.io/devcontainers/features/node:latest": {}
+  },
+
   "remoteUser": "vscode",
+
   "customizations": {
     "vscode": {
       "extensions": [
+        "dbaeumer.vscode-eslint",
+        "GitHub.copilot-chat",
+        "ms-azuretools.vscode-containers",
         "ms-dotnettools.csdevkit",
         "ms-dotnettools.csharp"
       ]
@@ -16,8 +29,11 @@
       ]
     }
   },
+
   "postCreateCommand": "bash -lc 'sln=$(find . -maxdepth 1 -name \"*.sln\" | head -n 1); if [ -n \"$sln\" ]; then dotnet restore \"$sln\"; else dotnet restore SocOps/SocOps.csproj; fi'",
-  "forwardPorts": [5166],
+
+  "forwardPorts": [ 5166 ],
+
   "portsAttributes": {
     "5166": {
       "label": "Blazor Dev Server",

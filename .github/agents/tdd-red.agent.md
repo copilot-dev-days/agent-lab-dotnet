@@ -1,7 +1,8 @@
 ---
 name: TDD Red
 description: TDD phase for writing FAILING tests
-infer: true
+user-invocable: true
+disable-model-invocation: false
 tools: ['read', 'edit', 'search']
 handoffs:
   - label: TDD Green

@@ -1,7 +1,8 @@
 ---
 name: TDD Green
 description: TDD phase for writing MINIMAL implementation to pass tests
-infer: true
+user-invocable: true
+disable-model-invocation: false
 tools: ['search', 'edit', 'execute/runTests']
 handoffs:
   - label: TDD Refactor

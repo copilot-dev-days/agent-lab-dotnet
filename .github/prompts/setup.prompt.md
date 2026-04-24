@@ -1,7 +1,7 @@
 ---
 agent: agent
 description: Get my development workspace ready
-tools: ['execute/runTask', 'execute/runInTerminal', 'read', 'search', 'todo']
+tools: ['execute/createAndRunTask', 'execute/runInTerminal', 'read', 'search', 'todo']
 ---
 
 Your goal is to successfully build and run the workspace as local development environment.
